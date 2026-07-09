@@ -14,9 +14,10 @@ app.add_middleware(
         "http://localhost:5174",
         "http://127.0.0.1:5174",
 
+        "https://natural-language-to-sql-engine.vercel.app",
+        "https://natural-language-to-sql-engine-gxck.vercel.app",
         "https://natural-language-to-sql-engine-gxck-567vyis2n.vercel.app",
         "https://natural-language-to-sql-engine-gnelgav5b.vercel.app",
-        "https://natural-language-to-sql-engine-gxck.vercel.app/",
     ],
     allow_credentials=True,
     allow_methods=["*"],
