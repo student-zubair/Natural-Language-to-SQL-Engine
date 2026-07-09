@@ -16,6 +16,7 @@ app.add_middleware(
 
         "https://natural-language-to-sql-engine-gxck-567vyis2n.vercel.app",
         "https://natural-language-to-sql-engine-gnelgav5b.vercel.app",
+        "https://natural-language-to-sql-engine-gxck.vercel.app/",
     ],
     allow_credentials=True,
     allow_methods=["*"],
