@@ -288,31 +288,6 @@ history.png
 dark_mode.png
 ```
 
-Then reference them:
-
-```markdown
-## Home
-
-![Home](screenshots/home.png)
-
-## Generated SQL
-
-![Generated SQL](screenshots/generated_sql.png)
-
-## Results
-
-![Results](screenshots/results.png)
-
-## Query History
-
-![History](screenshots/history.png)
-
-## Dark Mode
-
-![Dark Mode](screenshots/dark_mode.png)
-```
-
----
 
 # Assumptions
 
