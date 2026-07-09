@@ -29,19 +29,28 @@ app.add_middleware(
 def home():
     return {"message": "Natural Language to SQL API is running!"}
 
-
 @app.post("/generate")
 def generate(request: QuestionRequest):
+    try:
+        sql = generate_sql(request.question)
 
-    sql = generate_sql(request.question)
+        if sql == "__QUOTA_EXCEEDED__":
+            raise HTTPException(
+                status_code=429,
+                detail="Gemini API quota exceeded. Please try again later or use another API key."
+            )
 
-    if sql == "__QUOTA_EXCEEDED__":
+        return {"sql": sql}
+
+    except HTTPException:
+        raise
+
+    except Exception as e:
         raise HTTPException(
-            status_code=429,
-            detail="Gemini API quota exceeded. Please try again later or use another API key."
+            status_code=500,
+            detail=str(e)
         )
 
-    return {"sql": sql}
 
 @app.post("/execute")
 def execute(request: SQLRequest):
@@ -78,17 +87,3 @@ def get_schema():
         ]
 
     }
-from fastapi import HTTPException
-
-@app.post("/generate")
-def generate(request: QuestionRequest):
-
-    try:
-        sql = generate_sql(request.question)
-        return {"sql": sql}
-
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=str(e)
-        )
